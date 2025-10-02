@@ -11,7 +11,8 @@
     </thead>
     <tbody>
         <tr>
-            <td>{{ Personnage.nom }}</td>
+            <td>@if (Personnage.nom)  {{Personnage.nom}} 
+            </td>
             <td>{{ Personnage.prenom }}</td>
             <td>{{ Personnage.age }}</td>
             <td> {{ likes }} <button (click)="onAddLike()">{{ likeButtonText }}</button></td>
