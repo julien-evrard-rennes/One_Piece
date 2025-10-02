@@ -1,0 +1,21 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Age</th>
+            <th>Appreciations</th>
+            <th>Détails</th>
+            <th>image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ Personnage.nom }}</td>
+            <td>{{ Personnage.prenom }}</td>
+            <td>{{ Personnage.age }}</td>
+            <td> {{ likes }} <button (click)="onAddLike()">{{ likeButtonText }}</button></td>
+            <td><a>Détails</a></td>
+        </tr>
+    </tbody>
+</table>

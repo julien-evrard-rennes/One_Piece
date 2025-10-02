@@ -1,0 +1,26 @@
+* {
+        background-color: rgb(253 253 253 / 56%)
+    }
+
+        main {
+            margin-top: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    
+        main h1 {
+            margin: 10px;
+        }
+    
+        .center-main {
+            display: flex;
+            width: 100%;
+            height: 300px;
+            margin: auto;
+        }
+    
+        .center-section {
+            margin: auto;
+            text-align: center;
+        }
+

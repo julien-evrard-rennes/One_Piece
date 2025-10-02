@@ -1,0 +1,46 @@
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(248, 217, 217, 0.82);
+    padding: 20px 50px;
+    box-shadow: 0 1px 8px #ddd;
+}
+
+nav li {
+    font-size: 1.5em;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav-title {
+    margin-right: auto;
+    font-size: 1.1em;
+}
+
+ li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+ li li {
+    padding: 0 10px;
+    font-size: 0.7em;
+}
+
+ a {
+    text-decoration: none;
+    color: #555;
+    transition: all 0.3s ease 0s;
+}
+
+ a:hover {
+    color: rgb(192, 0, 80);
+}
+
