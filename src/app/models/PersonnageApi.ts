@@ -1,13 +1,11 @@
 
-import { Groupe } from "./groupe";
-
 export class PersonnageAPI {
 id : number;
 name : string;
 job : string;
 size: string;
 birthday : string;
-age : string;
+age : number;
 bounty : string;
 status : string;
 crew : {
@@ -36,7 +34,7 @@ name : string,
 job : string,
 size: string,
 birthday : string,
-age : string,
+age : number,
 bounty : string,
 status : string,
 crew : {
