@@ -7,13 +7,14 @@ import { ListGroupesComponent } from './template/list-groupes/list-groupes.compo
 import { FicheGroupeComponent } from './template/fiche-groupe/fiche-groupe.component';
 import { ListPersonnagesApiComponent } from './template/list-personnages-api/list-personnages-api.component';
 import { FichePersonnageApiComponent } from './template/fiche-personnage-api/fiche-personnage-api.component';
+import { ListGroupesApiComponent } from './template/list-groupes-api/list-groupes-api.component';
 
 
 const routes: Routes = [
   { path: 'personnage/:id', component: FichePersonnageApiComponent },
   { path: 'groupe/:id', component: FicheGroupeComponent },
    { path: 'listePersonnages', component: ListPersonnagesApiComponent },
-   { path: 'listeGroupes', component: ListGroupesComponent },
+   { path: 'listeGroupes', component: ListGroupesApiComponent },
    { path: '', component: LandingPageComponent }
 
 ];
