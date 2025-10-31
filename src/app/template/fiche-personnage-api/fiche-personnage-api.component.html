@@ -1,0 +1,38 @@
+<main>
+    <ul class="flex-outer">
+        <table>
+            <li>
+                <label><b>Nom :</b></label>
+                <tr>{{personnage.name}} </tr>
+            </li>
+            <li>
+                <label><b>Prenom :</b></label>
+                <tr> </tr>
+            </li>
+
+            <li>
+                <label><b>Age :</b></label>
+                <tr>{{personnage.age}} </tr>
+            </li>
+
+            <li>
+                <label><b>Fruit :</b></label>
+                <tr>@if (personnage.fruit) { {{personnage.fruit.name}} } </tr>
+            </li>
+
+            <li>
+                <label><b>Prime :</b></label>
+                <tr>{{personnage.bounty}} berrys </tr>
+            </li>
+            <li>
+                <label><b>Groupes :</b></label>
+                <ul>
+                <tr>@if (personnage.crew) { {{personnage.crew.name}} } </tr>
+                <tr>@if (personnage.job) { {{personnage.job}} } </tr>
+                </ul>
+            </li>
+        </table>
+    </ul>
+
+</main>
+

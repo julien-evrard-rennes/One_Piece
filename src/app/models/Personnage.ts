@@ -1,53 +1,76 @@
+
+import { Groupe } from "./groupe";
+import { LikeType } from "./like-type.type";
+
     
     export class Personnage {
 
         id : number;
-        prenom : string;
         nom : string;
         surnom : string;
         particule : string;
         sexe : string;
         age : number;
         prime : number;
-        groupe : string;
+        groupes : string[];
 
         likes!: number;
-        imageUrl?: number;
+        imageUrl?: string;
+        likeButtonText!:string;
+        userHasLiked!:boolean;
 
         constructor(
         id : number,
-        prenom : string,
+        public prenom : string,
         nom : string,
         surnom : string,
         particule : string,
         sexe : string,
         age : number,
         prime : number,
-        groupe : string,) {
-            this.id =id;
-            this.prenom = prenom;
+        groupes : string[],
+      ) {
+            this.id = id;
+            //this.id = crypto.randomUUID().substring(0, 8);
             this.nom = nom;
             this.surnom = surnom;
             this.particule = particule;
             this.sexe = sexe;
             this.age = age;
             this.prime = prime;
-            this.groupe = groupe;
+            this.groupes = groupes;
+            console.log(this);
         }
 
-    addLike(): void {
-    this.likes++;
-  }
+  like(likeType: LikeType) {
+    if (likeType === 'like') {
+      this.addLike();
+    } else if (likeType === 'unlike') {
+      this.removeLike();
+    }
+}
 
-  removeLike(): void {
-    this.likes--;
+  addLike(): void{
+      this.likes++;
+      }
+
+  removeLike(): void{
+      this.likes--;
+      }
+
+
+  setLike(likes: number): void {
+    this.likes = likes;
   }
 
   setImage(imageUrl: string): void {
-    this.imageUrl = this.imageUrl;
+    this.imageUrl = imageUrl;
   }
 
-
+    withImage(imageUrl: string): Personnage {
+    this.setImage(imageUrl);
+    return this;
+}
+ 
     }
-    
 

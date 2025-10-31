@@ -7,6 +7,7 @@ import { MainComponent } from './template/main/main.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { AccueilComponent } from './template/accueil/accueil.component';
 import { ListePersonnagesComponent } from './template/liste-personnages/liste-personnages.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ListePersonnagesComponent } from './template/liste-personnages/liste-pe
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

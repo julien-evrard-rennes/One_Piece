@@ -1,46 +1,52 @@
-import { NgIf, NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Personnage } from 'src/app/models/Personnage';
-
+import { ListePersoService } from '../../services/liste-perso-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-personnages',
   templateUrl: './liste-personnages.component.html',
   styleUrls: ['./liste-personnages.component.scss']
 })
+export class ListePersonnagesComponent implements OnInit {
 
-export class ListePersonnagesComponent {
-  @Input() Personnage!: Personnage;
-  likes!:number;
-  likeButtonText!: string;
-  userHasLiked!:boolean;
+  personnage!: Personnage;
+  persoList!: Personnage[];
+  likeButtonText = 'Ajouter un like !';
 
-  ngOnInit(): void{
-    this.likes= 52;
-    this.likeButtonText = 'Ajouter un like !';
-    this.userHasLiked = false;
-  } 
+  constructor(private listePersoService: ListePersoService, 
+    private router: Router) {}
 
-onAddLike(): void {
-    if (this.userHasLiked) {
-      this.unLike();
+  ngOnInit(): void {
+    this.persoList = this.listePersoService.getPersoList();
+  }
+
+  onViewFichePerso(personnage: Personnage) {
+    this.router.navigateByUrl(`personnage/${personnage.id}`);
+  }
+
+  onAddLike(personnage: Personnage): void {
+    if (!personnage) {
+      console.error('personnage undefined !');
+      return;
+    }
+
+    if (personnage.userHasLiked) {
+      this.unLike(personnage);
     } else {
-      this.like();
+      this.like(personnage);
     }
   }
 
-unLike() {
-    this.likes--;
-    this.likeButtonText = 'Ajouter 1 like';
-    this.userHasLiked = false;
-}
+  like(personnage: Personnage) {
+    this.listePersoService.LikeById(personnage.id, 'unlike');
+    personnage.userHasLiked = true;
+    personnage.likeButtonText = 'Enlever un like !';
+  }
 
-like() {
-    this.likes++;
-    this.likeButtonText = 'Enlever 1 like !';
-    this.userHasLiked = true;
-}
-
-
+  unLike(personnage: Personnage) {
+    this.listePersoService.LikeById(personnage.id, 'like');
+    personnage.userHasLiked = false;
+    personnage.likeButtonText = 'Ajouter un like !';
+  }
 }

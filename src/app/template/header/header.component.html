@@ -2,18 +2,11 @@
 <h1 id="nav-title"></h1>
 <nav>
     <ul>
-        <li><a href="/">Accueil</a></li>
+        <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
         <li><a href="/jeu">Jeu </a></li>
-        <li><a href="/personnages">Liste des personnages</a>
-            <ul>
-                <li><a href="/personnages/creer">Rajouter un personnage</a></li>
-            </ul>
+        <li><a routerLink="listePersonnages" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Liste des personnages</a>
         </li>
-
-        <li><a href="/groupes">Liste des équipages</a>
-            <ul>
-                <li><a href="/groupes/creer">Rajouter un équipage</a></li>
-            </ul>
+        <li><a routerLink="listeGroupes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Liste des équipages</a>
         </li>
     </ul>
 </nav>

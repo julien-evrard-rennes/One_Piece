@@ -1,6 +1,5 @@
 import { Component} from '@angular/core';
-import { ListePersonnagesComponent } from './template/liste-personnages/liste-personnages.component';
-import { Personnage } from './models/Personnage';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({

@@ -1,0 +1,27 @@
+<main>
+        <ul class="flex-outer">
+            <table>
+            <li>
+                <label><b>Nom :</b></label>
+                <tr>{{groupe.nom}} </tr>
+            </li>
+            <li>
+                <label><b>Capitaine :</b></label>
+                <tr>{{groupe.capitaine}} </tr>
+            </li>
+            <li>
+                <label><b>Membres :</b></label>
+                <ul>
+                    @for (personnage of groupe.membresListe; track personnage.id){
+                            <tr>
+                            <a (click)="onViewFichePerso(personnage)"><li>@if (personnage.nom) { {{personnage.nom}} } @if (personnage.particule === "D") { {{personnage.particule}} . } {{personnage.prenom}}
+                            </li></a>
+                            </tr>
+                            }
+                </ul>
+            </li>
+    </table>
+            </ul>
+
+</main>
+

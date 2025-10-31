@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Équipage</th>
+            <th>Détails</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (personnage of persoList; track personnage.id){
+        <tr>
+            <td>{{personnage.name}} </td>
+            <td>@if (personnage.crew) { {{personnage.crew.name}} } </td>
+            <td><button (click)="onViewFichePerso(personnage)">Détails</button></td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Détails</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (groupe of groupeList; track groupe.id){
+        <tr>
+            <td>{{groupe.nom}}</td>
+            <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
+        </tr>
+        }
+    </tbody>
+</table>

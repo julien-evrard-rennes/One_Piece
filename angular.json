@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "One_Piece:build:production"
+              "buildTarget": "One_Piece:build:production"
             },
             "development": {
-              "browserTarget": "One_Piece:build:development"
+              "buildTarget": "One_Piece:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "One_Piece:build"
+            "buildTarget": "One_Piece:build"
           }
         },
         "test": {

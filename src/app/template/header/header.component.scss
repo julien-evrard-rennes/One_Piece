@@ -40,6 +40,10 @@ nav ul {
     transition: all 0.3s ease 0s;
 }
 
+.active {
+    color: #9c2222;
+}
+
  a:hover {
     color: rgb(192, 0, 80);
 }

@@ -1,15 +1,8 @@
 
-button {
-    width:125px;
-    background-color:rgb(13, 85, 148);
-    color:#f2f2f2;
-    text-rendering: uppercase;
-    padding:2px;
-
-}
 
 
 table {
+    margin:15px;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 90%;
@@ -17,16 +10,24 @@ table {
 
 table td,
 table th {
-    border: 1px solid #ddd;
+    border: 1px solid #bdbdbd;
     padding: 8px;
 }
 
+table td img{
+    width:50px;
+}
+
+table tr{
+    background-color: rgb(247, 228, 195);
+}
+
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #fbfcef;
 }
 
 table tr:hover {
-    background-color: #ddd;
+    background-color: rgb(250, 219, 179);
 }
 
 table th {
@@ -50,4 +51,30 @@ table a:visited {
 table a:hover,
 table a:active {
     background-color: #004040;
+}
+
+.liked {
+    background-color: rgba(lightgreen, 0.4);
+    color: darkgreen;
+
+    button {
+        background-color: rgb(100, 0, 17);
+
+    }
+}
+
+button {
+    margin-left: auto;
+    margin-bottom: 5px;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+}
+
+button:hover {
+    background-color: #471b1b;
+    cursor: pointer;
 }

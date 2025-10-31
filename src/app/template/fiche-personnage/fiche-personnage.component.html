@@ -1,0 +1,44 @@
+<main>
+        <ul class="flex-outer">
+            <table>
+            <li>
+                <label><b>Nom :</b></label>
+                <tr>{{personnage.nom}} @if (personnage.particule === "D") { {{personnage.particule}} . } </tr>
+            </li>
+            <li>
+                <label><b>Prenom :</b></label>
+                <tr>{{personnage.prenom}} </tr>
+            </li>
+            <li>
+                <label><b>Surnom :</b></label>
+                <tr>{{personnage.surnom}} </tr>
+            </li>
+
+            <li>
+                <label><b>Age :</b></label>
+                <tr>{{personnage.age}} </tr>
+            </li>
+
+            <li>
+                <label><b>Genre :</b></label>
+                <tr>{{personnage.sexe}} </tr>
+            </li>
+
+            <li>
+                <label><b>Prime :</b></label>
+                <tr>{{personnage.prime}} </tr>
+            </li>
+            <li>
+                <label><b>Groupes :</b></label>
+                <ul>
+                    @for (groupe of personnage.groupes; track $index){
+                    <tr>
+                        <a (click)="onViewFicheGroupe(groupe)"><li>{{groupe}}</li></a>
+                    </tr>
+                    }
+                </ul>
+            </li>
+    </table>
+            </ul>
+
+</main>
