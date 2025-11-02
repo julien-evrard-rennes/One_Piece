@@ -2,7 +2,9 @@
     <thead>
         <tr>
             <th>Nom</th>
+            <th>Age</th>
             <th>Équipage</th>
+            <th>Status</th>
             <th>Détails</th>
         </tr>
     </thead>
@@ -10,7 +12,9 @@
         @for (personnage of persoList; track personnage.id){
         <tr>
             <td>{{personnage.name}} </td>
+            <td>@if (personnage.age) { {{personnage.age}} } @else { age inconnu } </td>
             <td>@if (personnage.crew) { {{personnage.crew.name}} } </td>
+            <td>@if (personnage.status) { {{personnage.status}} } @else { ---- } </td>
             <td><button (click)="onViewFichePerso(personnage)">Détails</button></td>
         </tr>
         }

@@ -10,27 +10,62 @@
                 <tr> </tr>
             </li>
 
+@if (personnage.size){
+            <li>
+                <label><b>Taille :</b></label>
+                <tr>{{personnage.size}} </tr>
+            </li>
+            }
+
+@if (personnage.age) {
             <li>
                 <label><b>Age :</b></label>
-                <tr>{{personnage.age}} </tr>
+                <ul>
+                <li>{{personnage.age}} </li>
+                @if (personnage.birthday) {
+                    <li>{{personnage.birthday}} </li>
+                }
+                </ul>
             </li>
+        }
 
-            <li>
-                <label><b>Fruit :</b></label>
-                <tr>@if (personnage.fruit) { {{personnage.fruit.name}} } </tr>
-            </li>
+@if (personnage.bounty) {
 
             <li>
                 <label><b>Prime :</b></label>
                 <tr>{{personnage.bounty}} berrys </tr>
             </li>
+    }
+
             <li>
-                <label><b>Groupes :</b></label>
+                <label><b>Statut :</b></label>
+                <tr>{{personnage.status}} </tr>
+            </li>
+
+@if (personnage.fruit) {
+            <li>
+                <label><b>Fruit :</b></label>
                 <ul>
-                <tr>@if (personnage.crew) { {{personnage.crew.name}} } </tr>
-                <tr>@if (personnage.job) { {{personnage.job}} } </tr>
+                    <li><label>Nom :</label>{{personnage.fruit.name}} </li>
+                    <li><label>Description :</label>{{personnage.fruit.description}} </li>
+                    <li><label>Type :</label>{{personnage.fruit.type}} </li>
                 </ul>
             </li>
+            }
+
+@if (personnage.crew) {
+
+            <li>
+                <label><b>Équipage :</b></label>
+                <ul>
+                <li><label>Nom :</label>{{personnage.crew.name}} </li>
+                <li><label>Description :</label>{{personnage.crew.description}} </li>
+                <li><label>Status :</label>{{personnage.crew.status}} </li>
+                <li><label>Primes totales :</label>{{personnage.crew.total_prime}} berrys </li>
+                <li><label>Job du personnage :</label>@if (personnage.job) { {{personnage.job}} } </li>
+                </ul>
+            </li>
+        }
         </table>
     </ul>
 
