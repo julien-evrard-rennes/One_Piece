@@ -40,10 +40,8 @@ private getPersonnage() {
     });
 }
 
-    onViewFicheGroupe(nom: String) {
-    const groupe = this.listeGroupeService.getGroupeByName(nom)
-    const idNum = Number(groupe.id);
-    this.router.navigateByUrl(`groupe/${idNum}`);
+  onViewFicheGroupe(idGroupe: number) {
+    this.router.navigateByUrl(`groupe/${idGroupe}`);
   }
 
 

@@ -20,12 +20,9 @@
 @if (personnage.age) {
             <li>
                 <label><b>Age :</b></label>
-                <ul>
-                <li>{{personnage.age}} </li>
-                @if (personnage.birthday) {
-                    <li>{{personnage.birthday}} </li>
-                }
-                </ul>
+
+                <tr>{{personnage.age}} </tr>
+
             </li>
         }
 
@@ -58,11 +55,20 @@
             <li>
                 <label><b>Équipage :</b></label>
                 <ul>
-                <li><label>Nom :</label>{{personnage.crew.name}} </li>
-                <li><label>Description :</label>{{personnage.crew.description}} </li>
+                    <a (click)="onViewFicheGroupe(personnage.crew.id)">
+                <li>
+                    {{personnage.crew.name}}
+                </li></a>
+                @if (personnage.crew.description) {
+                    <li><label>Description :</label>{{personnage.crew.description}} </li>
+                }
                 <li><label>Status :</label>{{personnage.crew.status}} </li>
+                @if (personnage.crew.total_prime) {
                 <li><label>Primes totales :</label>{{personnage.crew.total_prime}} berrys </li>
+                }
+                @if (personnage.job) {
                 <li><label>Job du personnage :</label>@if (personnage.job) { {{personnage.job}} } </li>
+                }
                 </ul>
             </li>
         }
