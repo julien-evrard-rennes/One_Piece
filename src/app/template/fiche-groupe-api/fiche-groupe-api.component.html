@@ -10,8 +10,9 @@
                 <tr>{{groupe.status}} </tr>
             </li>
             <li>
-                <label><b>Empereur ou pas ? </b></label>
-                <tr>{{groupe.is_yonko}} </tr>
+                <label><b>Le capitaine est-il un empereur ? </b></label>
+                <tr>@if (groupe.is_yonko) {Oui} 
+                    @else {Non} </tr>
             </li>
             <li>
                 <label><b>Membres :</b></label>

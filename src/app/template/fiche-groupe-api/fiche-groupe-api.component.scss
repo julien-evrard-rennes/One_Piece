@@ -2,15 +2,19 @@ table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 90%;
-    background-color: #e9e2e2;
+    background-color: rgb(238, 203, 157);
 }
 
 table td,
 table th {
     border: 1px solid #ddd3d3;
     padding: 8px;
+    background-color: rgb(206, 200, 190);
 }
 
+table tr {
+    margin-left: 5px;
+}
 
 table th {
     padding-top: 12px;
@@ -30,10 +34,11 @@ table a:visited {
     display: inline-block;
 }
 
-
-form {
-    background-color: #d7cdcd;
+table a:hover,
+table a:active {
+    background-color: #004040;
 }
+
 
 form h1 {
     margin: 15px;
@@ -44,12 +49,20 @@ form h1 {
     flex-wrap: wrap;
     align-items: center;
     margin: 10px;
-    border: 1px solid #d7cdcd;
+    border: 1px solid #f1e6cb;
+    border-radius: 5px;
+    background-color: #f1e6cb;
     color: #353030;
-    background-color: #dfd1d1;
     padding: 5px;
 }
 
+.flex-outer li a li {
+    background-color: rgb(236, 222, 198);
+}
+
+.flex-outer li a:hover {
+    background-color: #b68888;
+}
 
 
 .flex-outer>li select {
@@ -91,7 +104,11 @@ form h1 {
     letter-spacing: .09em;
 }
 
-.flex-outer li li:hover {
+.flex-outer a li:hover {
+    background: #e4b1b1;
+}
+
+.flex-outer li a li:hover {
     background-color: #ecd1d1;
     cursor: pointer;
 

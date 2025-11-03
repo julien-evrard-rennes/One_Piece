@@ -8,11 +8,12 @@ import { FicheGroupeComponent } from './template/fiche-groupe/fiche-groupe.compo
 import { ListPersonnagesApiComponent } from './template/list-personnages-api/list-personnages-api.component';
 import { FichePersonnageApiComponent } from './template/fiche-personnage-api/fiche-personnage-api.component';
 import { ListGroupesApiComponent } from './template/list-groupes-api/list-groupes-api.component';
+import { FicheGroupeApiComponent } from './template/fiche-groupe-api/fiche-groupe-api.component';
 
 
 const routes: Routes = [
   { path: 'personnage/:id', component: FichePersonnageApiComponent },
-  { path: 'groupe/:id', component: FicheGroupeComponent },
+  { path: 'groupe/:id', component: FicheGroupeApiComponent },
    { path: 'listePersonnages', component: ListPersonnagesApiComponent },
    { path: 'listeGroupes', component: ListGroupesApiComponent },
    { path: '', component: LandingPageComponent }
