@@ -1,1 +1,34 @@
-<p>fiche-groupe-api works!</p>
+<main>
+    <ul class="flex-outer">
+        <table>
+            <li>
+                <label><b>Nom :</b></label>
+                <tr>{{groupe.name}} </tr>
+            </li>
+            <li>
+                <label><b>Status :</b></label>
+                <tr>{{groupe.status}} </tr>
+            </li>
+            <li>
+                <label><b>Empereur ou pas ? </b></label>
+                <tr>{{groupe.is_yonko}} </tr>
+            </li>
+            <li>
+                <label><b>Membres :</b></label>
+                <!-- <ul>
+                    @for (personnage of groupe.; track personnage.id){
+                    <tr>
+                        <a (click)="onViewFichePerso(personnage)">
+                            <li>@if (personnage.nom) { {{personnage.nom}} } @if (personnage.particule === "D") {
+                                {{personnage.particule}} . } {{personnage.prenom}}
+                            </li>
+                        </a>
+                    </tr>
+                    }
+                </ul> -->
+            </li>
+        </table>
+    </ul>
+
+</main>
+

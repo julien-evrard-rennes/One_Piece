@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Groupe } from 'src/app/models/groupe';
 import { Personnage } from 'src/app/models/Personnage';
 import { ListeGroupeService } from 'src/app/services/liste-groupe-service';
-import { ListePersoService } from 'src/app/services/liste-perso-service';
 
 @Component({
   selector: 'app-fiche-groupe',

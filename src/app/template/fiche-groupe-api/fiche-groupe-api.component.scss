@@ -1,0 +1,102 @@
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    background-color: #e9e2e2;
+}
+
+table td,
+table th {
+    border: 1px solid #ddd3d3;
+    padding: 8px;
+}
+
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+}
+
+table a:link,
+table a:visited {
+    background-color: #008080;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+form {
+    background-color: #d7cdcd;
+}
+
+form h1 {
+    margin: 15px;
+}
+
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid #d7cdcd;
+    color: #353030;
+    background-color: #dfd1d1;
+    padding: 5px;
+}
+
+
+
+.flex-outer>li select {
+    flex: 1 0 220px;
+}
+
+.flex-outer>li>label {
+    flex: 1 0 120px;
+    max-width: 350px;
+}
+
+.flex-outer>li>label+* {
+    flex: 1 0 220px;
+}
+
+.flex-outer>li>label+a.bouton {
+    flex: none;
+}
+
+.flex-outer>li>label+input#idParticule {
+    flex: none;
+}
+
+.flex-outer>li>label+input#genreCheck1,
+#genreCheck2,
+#genreCheck3 {
+    flex: none;
+    margin-right: 5px;
+}
+
+.flex-outer li button {
+    margin-left: auto;
+    margin-bottom: 5px;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+}
+
+.flex-outer li li:hover {
+    background-color: #ecd1d1;
+    cursor: pointer;
+
+}
+
+.flex-outer li li {
+    background-color: #f6f4f4;
+}
