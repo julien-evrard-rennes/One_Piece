@@ -16,17 +16,20 @@
             </li>
             <li>
                 <label><b>Membres :</b></label>
-                <!-- <ul>
-                    @for (personnage of groupe.; track personnage.id){
-                    <tr>
-                        <a (click)="onViewFichePerso(personnage)">
-                            <li>@if (personnage.nom) { {{personnage.nom}} } @if (personnage.particule === "D") {
-                                {{personnage.particule}} . } {{personnage.prenom}}
-                            </li>
-                        </a>
-                    </tr>
+                <ul>
+
+                    @for (personnage of persoList; track personnage.id) {
+
+                   <tr>
+                    <a (click)="onViewFichePerso(personnage)">
+                      <li>@if (personnage.name) { {{personnage.name}} }
+                         </li>
+                    </a>
+                   </tr>
                     }
-                </ul> -->
+
+
+                </ul> 
             </li>
         </table>
     </ul>

@@ -15,6 +15,7 @@ export class FicheGroupeApiComponent implements OnInit {
 
   personnage!: PersonnageAPI;
   groupe! : GroupeAPI;
+  persoList: PersonnageAPI[] =[];
 
   constructor(
     private apiGroupeService : ApiGroupe,
@@ -23,23 +24,35 @@ export class FicheGroupeApiComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this. getGroupe();
+    this.getGroupe();
   }
 
   private getGroupe() {
     const groupeId = this.route.snapshot.params['id'];
-    this.apiGroupeService.getGroupeById(groupeId)
-    .subscribe({
-      next: (g: GroupeAPI) =>{
+
+    this.apiGroupeService.getGroupeById(groupeId).subscribe({
+      next: (g: GroupeAPI) => {
         this.groupe = g;
-        console.log(this.groupe);
+        console.log('Groupe récupéré :', this.groupe);
+        this.getPersoList(this.groupe);
       },
-      error: (err) => console.error('Erreur récupération personnage:', err)
+      error: (err) => console.error('Erreur récupération groupe:', err)
     });
-}
+  }
     
   onViewFichePerso(personnage: PersonnageAPI) {
     this.router.navigateByUrl(`personnage/${personnage.id}`);
   }
 
+  private getPersoList(groupe: GroupeAPI) {
+    this.apiGroupeService.getPersoList(groupe).subscribe({
+      next: (persoList) => {
+        this.persoList = persoList; 
+        console.log('Personnages du groupe :', this.persoList);
+      },
+      error: (err) => console.error('Erreur récupération personnages :', err)
+    });
+  }
+
 }
+
