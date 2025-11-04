@@ -104,12 +104,16 @@ form h1 {
     letter-spacing: .09em;
 }
 
-.flex-outer a li:hover {
-    background: #e4b1b1;
+
+.flex-outer li a li {
+    background-color: rgb(204, 236, 198);
+    text-decoration: solid;
+    border: 1px solid #015028;
 }
 
+
 .flex-outer li a li:hover {
-    background-color: #ecd1d1;
+    background-color: #8ad9ec;
     cursor: pointer;
 
 }

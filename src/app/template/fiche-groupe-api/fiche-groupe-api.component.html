@@ -15,21 +15,15 @@
                     @else {Non} </tr>
             </li>
             <li>
+                <tr>
                 <label><b>Membres :</b></label>
-                <ul>
-
                     @for (personnage of persoList; track personnage.id) {
-
-                   <tr>
                     <a (click)="onViewFichePerso(personnage)">
                       <li>@if (personnage.name) { {{personnage.name}} }
-                         </li>
+                      </li>
                     </a>
-                   </tr>
                     }
-
-
-                </ul> 
+                </tr>
             </li>
         </table>
     </ul>

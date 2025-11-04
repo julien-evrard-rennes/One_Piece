@@ -59,10 +59,11 @@ form h1 {
 .flex-outer li a li {
     background-color: rgb(204, 236, 198);
     text-decoration:solid;
+    border: 1px solid #015028;
 }
 
 .flex-outer li a:hover {
-    background-color: #85b0bb;
+    background-color: #8ad9ec;
 }
 
 
@@ -107,7 +108,7 @@ form h1 {
 
 
 .flex-outer li a li:hover {
-    background-color: #d1e9ec;
+    background-color: #8ad9ec;
     cursor: pointer;
 
 }
