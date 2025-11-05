@@ -57,6 +57,7 @@ form h1 {
 }
 
 .flex-outer li a li {
+    display: inline-block;
     background-color: rgb(204, 236, 198);
     text-decoration:solid;
     border: 1px solid #015028;

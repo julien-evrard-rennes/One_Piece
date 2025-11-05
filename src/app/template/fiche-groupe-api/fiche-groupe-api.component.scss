@@ -34,12 +34,6 @@ table a:visited {
     display: inline-block;
 }
 
-table a:hover,
-table a:active {
-    background-color: #004040;
-}
-
-
 form h1 {
     margin: 15px;
 }
@@ -60,9 +54,10 @@ form h1 {
     background-color: rgb(236, 222, 198);
 }
 
-.flex-outer li a:hover {
-    background-color: #b68888;
-}
+tr.listePerso {
+        display : flex;
+        flex-wrap: wrap;
+        }
 
 
 .flex-outer>li select {
@@ -115,7 +110,6 @@ form h1 {
 .flex-outer li a li:hover {
     background-color: #8ad9ec;
     cursor: pointer;
-
 }
 
 .flex-outer li li {

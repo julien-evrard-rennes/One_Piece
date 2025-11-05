@@ -15,8 +15,8 @@
                     @else {Non} </tr>
             </li>
             <li>
-                <tr>
                 <label><b>Membres :</b></label>
+                <tr class="listePerso">
                     @for (personnage of persoList; track personnage.id) {
                     <a (click)="onViewFichePerso(personnage)">
                       <li>@if (personnage.name) { {{personnage.name}} }
