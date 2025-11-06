@@ -2,7 +2,8 @@
     <thead>
         <tr>
             <th>Nom</th>
-            <th>Nombre de Membres</th>
+            <th>Nombre de Membres (théorique)</th>
+            <th>Nombre de Fiches Persos liées</th>
             <th>Détails</th>
         </tr>
     </thead>
@@ -11,6 +12,10 @@
         @for (groupe of groupeList; track groupe.id){
         <tr>
             <td>{{groupe.name}}</td>
+            <td>
+                @if (groupe.number) { {{groupe.number}} }
+                @else {inconnu }
+            </td>
             <td>{{nbMembres[groupe.id] }}</td>
             <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
         </tr>

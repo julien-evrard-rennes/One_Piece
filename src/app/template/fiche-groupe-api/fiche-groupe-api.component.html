@@ -5,17 +5,39 @@
                 <label><b>Nom :</b></label>
                 <tr>{{groupe.name}} </tr>
             </li>
+
+             <li>
+                <label><b>Nom japonais :</b></label>
+                <tr>{{groupe.roman_name}} </tr>
+             </li>
+
+            <li>
+                <label><b>Description :</b></label>
+                <tr>{{groupe.description}} </tr>
+            </li>
             <li>
                 <label><b>Status :</b></label>
                 <tr>{{groupe.status}} </tr>
             </li>
+
+             <li>
+                <label><b>Total Prime :</b></label>
+                <tr>{{groupe.total_prime}} </tr>
+            </li>
+
             <li>
                 <label><b>Le capitaine est-il un empereur ? </b></label>
                 <tr>@if (groupe.is_yonko) {Oui} 
                     @else {Non} </tr>
             </li>
+
             <li>
-                <label><b>Membres :</b></label>
+                <label><b>Nombre de membres (théorique) : </b></label>
+                <tr>{{ groupe.number }} </tr>
+            </li>
+
+            <li>
+                <label><b> {{persoList.length}} Membres connus :</b></label>
                 <tr class="listePerso">
                     @for (personnage of persoList; track personnage.id) {
                     <a (click)="onViewFichePerso(personnage)">
