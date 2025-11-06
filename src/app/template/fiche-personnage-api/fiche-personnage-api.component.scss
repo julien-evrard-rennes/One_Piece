@@ -34,11 +34,6 @@ table a:visited {
     display: inline-block;
 }
 
-table a:hover,
-table a:active {
-    background-color: #004040;
-}
-
 
 form h1 {
     margin: 15px;
@@ -62,11 +57,6 @@ form h1 {
     text-decoration:solid;
     border: 1px solid #015028;
 }
-
-.flex-outer li a:hover {
-    background-color: #8ad9ec;
-}
-
 
 .flex-outer>li select {
     flex: 1 0 220px;

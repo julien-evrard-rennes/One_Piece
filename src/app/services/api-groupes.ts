@@ -50,4 +50,14 @@ getPersoList(groupe: GroupeAPI): Observable<PersonnageAPI[]> {
   );
 }
 
+getNombreMembres(groupeId: number): Observable<number> {
+    return this.listePersoService.getPersos().pipe(
+      map(persoList => {
+        const membres = persoList.filter(
+          p => p?.groupe?.id === groupeId || p?.crew?.id === groupeId
+        );
+        return membres.length;
+      })
+    );
+}
 }

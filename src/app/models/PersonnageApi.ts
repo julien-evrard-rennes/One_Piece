@@ -27,6 +27,7 @@ filename : string;
 roman_name : string;
 technicalFile : string;
 }
+  groupe: any;
 
 constructor(
 id : number,
