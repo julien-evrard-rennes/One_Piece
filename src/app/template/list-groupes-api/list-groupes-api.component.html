@@ -4,6 +4,7 @@
             <th>Nom</th>
             <th>Nombre de Membres (théorique)</th>
             <th>Nombre de Fiches Persos liées</th>
+            <th>Status</th>
             <th>Détails</th>
         </tr>
     </thead>
@@ -17,6 +18,9 @@
                 @else {inconnu }
             </td>
             <td>{{nbMembres[groupe.id] }}</td>
+            <td>@if (groupe.status =="arr�t�") 
+                { arrêté }
+            @else { {{groupe.status}} }</td>
             <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
         </tr>
         }
