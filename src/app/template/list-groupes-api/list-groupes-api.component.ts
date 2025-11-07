@@ -16,7 +16,9 @@ export class ListGroupesApiComponent implements OnInit {
     groupe! : GroupeAPI;
     groupeList! : GroupeAPI[];
     persoList: PersonnageAPI[] =[];
-    nbMembres: { [id: number]: number } = {}; 
+    nbMembres: { [id: number]: number } = {};
+    triAscendant = true; 
+    triAscendantNumber = true; 
 
     
       constructor(private apiGroupeService: ApiGroupe, 
@@ -29,11 +31,13 @@ export class ListGroupesApiComponent implements OnInit {
         this.groupeList = groupeList;
         groupeList.forEach(groupe => {
           this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
-            next: (count) => this.nbMembres[groupe.id] = count
+            next: (count) => {this.nbMembres[groupe.id] = count 
+
+            }
           });
         });
       },
-      error: (err: Error) => console.log(err),
+      error: (err) => console.log('Erreur récupération groupes :', err),
       complete: () => console.log('complete')
     })
   }
@@ -42,6 +46,25 @@ export class ListGroupesApiComponent implements OnInit {
     this.router.navigateByUrl(`groupe/${groupe.id}`);
   }
 
+//
 
+    onTrierParNumber() {
+    this.groupeList.sort((a,b) => {
+      const nbC = parseInt(a.number) ?? 0;
+      const nbD = parseInt(b.number) ?? 0;
+      return this.triAscendantNumber ? nbC - nbD : nbD - nbC;
+    });
+    this.triAscendantNumber = !this.triAscendantNumber; 
+  }
 
+  onTrierParMembresReels() {
+    this.groupeList.sort((a, b) => {
+      const nbA = this.nbMembres[a.id] ?? 0;
+      const nbB = this.nbMembres[b.id] ?? 0;
+      return this.triAscendant ? nbA - nbB : nbB - nbA;
+    });
+    this.triAscendant = !this.triAscendant; // on inverse le sens du tri à chaque clic
+  }
 }
+
+

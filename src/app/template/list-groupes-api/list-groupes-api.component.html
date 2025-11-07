@@ -1,9 +1,20 @@
+
+<div>
+    
 <table>
     <thead>
         <tr>
             <th>Nom</th>
-            <th>Nombre de Membres (théorique)</th>
-            <th>Nombre de Fiches Persos liées</th>
+            <th>Nombre de Membres (théorique)
+            <div class="button" (click)="onTrierParNumber()"> TRIER </div>
+                <span *ngIf="triAscendantNumber">⬆️</span>
+                <span *ngIf="!triAscendantNumber">⬇️</span>
+            </th>
+            <th>Nombre de Fiches Persos liées 
+                <div class="button" (click)="onTrierParMembresReels()"> TRIER </div>
+                <span *ngIf="triAscendant">⬆️</span>
+                <span *ngIf="!triAscendant">⬇️</span>
+            </th>
             <th>Status</th>
             <th>Détails</th>
         </tr>
@@ -26,6 +37,8 @@
         }
     </tbody>
 </table>
+
+</div>
 <!--
 <div class="liste">
     <ul>
