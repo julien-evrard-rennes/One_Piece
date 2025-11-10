@@ -37,15 +37,19 @@ export class ListGroupesApiComponent implements OnInit {
       next: (groupeList: GroupeAPI[]) => {
         this.groupeList = groupeList;
         groupeList.forEach(groupe => {
+          const mock = this.groupeMockList.find(g => g.id === groupe.id);
           this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
-            next: (count) => {this.nbMembres[groupe.id] = groupeMock[groupe.id].nbMembres 
-            }
+            next: (count) => {
+              //this.nbMembres[groupe.id] = count 
+              this.nbMembres[groupe.id] = mock?.nbmembres ?? count;
+            },
+            error: (err) => console.error('Erreur récupération nombre membres :', err)
           });
         });
       },
       error: (err) => console.log('Erreur récupération groupes :', err),
       complete: () => console.log('complete')
-    })
+    });
   }
 
   onViewFicheGroupe(groupe: GroupeAPI) {
