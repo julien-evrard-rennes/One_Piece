@@ -1,8 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Groupe } from 'src/app/models/groupe';
 import { GroupeAPI } from 'src/app/models/groupeApi';
 import { PersonnageAPI } from 'src/app/models/PersonnageApi';
 import { ApiGroupe } from 'src/app/services/api-groupes';
+import { ListeGroupeService } from 'src/app/services/liste-groupe-service';
 
 @Component({
   selector: 'app-list-groupes-api',
@@ -15,24 +17,28 @@ export class ListGroupesApiComponent implements OnInit {
 
     groupe! : GroupeAPI;
     groupeList! : GroupeAPI[];
+    groupeMock! : Groupe;
+    groupeMockList! : Groupe[];
     persoList: PersonnageAPI[] =[];
     nbMembres: { [id: number]: number } = {};
     triAscendant = true; 
     triAscendantNumber = true; 
 
     
-      constructor(private apiGroupeService: ApiGroupe, 
-        private router: Router
+      constructor(
+        private apiGroupeService: ApiGroupe, 
+        private router: Router,
+        private listeGroupeService: ListeGroupeService
       ) {}
     
   ngOnInit(): void {
+    this.groupeMockList = this.listeGroupeService.getGroupeList();
     this.apiGroupeService.getGroupes().subscribe({
       next: (groupeList: GroupeAPI[]) => {
         this.groupeList = groupeList;
         groupeList.forEach(groupe => {
           this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
-            next: (count) => {this.nbMembres[groupe.id] = count 
-
+            next: (count) => {this.nbMembres[groupe.id] = groupeMock[groupe.id].nbMembres 
             }
           });
         });

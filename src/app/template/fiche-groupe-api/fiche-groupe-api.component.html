@@ -3,38 +3,38 @@
         <table>
             <li>
                 <label><b>Nom :</b></label>
-                <tr>{{groupe.name}} </tr>
+                <tr>{{groupeAPI.name}} </tr>
             </li>
 
              <li>
                 <label><b>Nom japonais :</b></label>
-                <tr>{{groupe.roman_name}} </tr>
+                <tr>{{groupeAPI.roman_name}} </tr>
              </li>
 
             <li>
                 <label><b>Description :</b></label>
-                <tr>{{groupe.description}} </tr>
+                <tr>{{groupeAPI.description}} </tr>
             </li>
             <li>
                 <label><b>Status :</b></label>
-                <tr>@if (groupe.status =="arr�t�") { arrêté }
-                @else { {{groupe.status}} } </tr>
+                <tr>@if (groupeAPI.status =="arr�t�") { arrêté }
+                @else { {{groupeAPI.status}} } </tr>
             </li>
 
              <li>
                 <label><b>Total Prime :</b></label>
-                <tr>{{groupe.total_prime}} </tr>
+                <tr>{{groupeAPI.total_prime}} </tr>
             </li>
 
             <li>
                 <label><b>Le capitaine est-il un empereur ? </b></label>
-                <tr>@if (groupe.is_yonko) {Oui} 
+                <tr>@if (groupeAPI.is_yonko) {Oui} 
                     @else {Non} </tr>
             </li>
 
             <li>
                 <label><b>Nombre de membres (théorique) : </b></label>
-                <tr>{{ groupe.number }} </tr>
+                <tr>{{ groupeAPI.number }} </tr>
             </li>
 
             <li>

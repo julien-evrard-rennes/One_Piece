@@ -14,7 +14,7 @@ import { ApiGroupe } from 'src/app/services/api-groupes';
 export class FicheGroupeApiComponent implements OnInit {
 
   personnage!: PersonnageAPI;
-  groupe! : GroupeAPI;
+  groupeAPI! : GroupeAPI;
   persoList: PersonnageAPI[] =[];
 
   constructor(
@@ -32,9 +32,9 @@ export class FicheGroupeApiComponent implements OnInit {
 
     this.apiGroupeService.getGroupeById(groupeId).subscribe({
       next: (g: GroupeAPI) => {
-        this.groupe = g;
-        console.log('Groupe récupéré :', this.groupe);
-        this.getPersoList(this.groupe);
+        this.groupeAPI = g;
+        console.log('Groupe récupéré :', this.groupeAPI);
+        this.getPersoList(this.groupeAPI);
       },
       error: (err) => console.error('Erreur récupération groupe:', err)
     });
