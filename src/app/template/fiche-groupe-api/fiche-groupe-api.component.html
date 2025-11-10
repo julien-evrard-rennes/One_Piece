@@ -1,1 +1,55 @@
-<p>fiche-groupe-api works!</p>
+<main>
+    <ul class="flex-outer">
+        <table>
+            <li>
+                <label><b>Nom :</b></label>
+                <tr>{{groupeAPI.name}} </tr>
+            </li>
+
+             <li>
+                <label><b>Nom japonais :</b></label>
+                <tr>{{groupeAPI.roman_name}} </tr>
+             </li>
+
+            <li>
+                <label><b>Description :</b></label>
+                <tr>{{groupeAPI.description}} </tr>
+            </li>
+            <li>
+                <label><b>Status :</b></label>
+                <tr>@if (groupeAPI.status =="arr�t�") { arrêté }
+                @else { {{groupeAPI.status}} } </tr>
+            </li>
+
+             <li>
+                <label><b>Total Prime :</b></label>
+                <tr>{{groupeAPI.total_prime}} </tr>
+            </li>
+
+            <li>
+                <label><b>Le capitaine est-il un empereur ? </b></label>
+                <tr>@if (groupeAPI.is_yonko) {Oui} 
+                    @else {Non} </tr>
+            </li>
+
+            <li>
+                <label><b>Nombre de membres (théorique) : </b></label>
+                <tr>{{ groupeAPI.number }} </tr>
+            </li>
+
+            <li>
+                <label><b> {{persoList.length}} Membres connus :</b></label>
+                <tr class="listePerso">
+                    @for (personnage of persoList; track personnage.id) {
+                    <a (click)="onViewFichePerso(personnage)">
+                      <li>@if (personnage.name) { {{personnage.name}} }
+                      </li>
+                    </a>
+                    }
+                </tr>
+            </li>
+        </table>
+    </ul>
+
+</main>
+

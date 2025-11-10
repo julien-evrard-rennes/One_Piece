@@ -9,7 +9,7 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class ApiPerso {
   private readonly http: HttpClient = inject(HttpClient);
-
+  
   getPersos() {
     return this.http.get<PersonnageAPI[]>(environment.API_PERSO_OP);
   }

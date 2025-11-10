@@ -1,7 +1,21 @@
+
+<div>
+    
 <table>
     <thead>
         <tr>
             <th>Nom</th>
+            <th>Nombre de Membres (théorique)
+            <div class="button" (click)="onTrierParNumber()"> TRIER </div>
+                <span *ngIf="triAscendantNumber">⬆️</span>
+                <span *ngIf="!triAscendantNumber">⬇️</span>
+            </th>
+            <th>Nombre de Fiches Persos liées 
+                <div class="button" (click)="onTrierParMembresReels()"> TRIER </div>
+                <span *ngIf="triAscendant">⬆️</span>
+                <span *ngIf="!triAscendant">⬇️</span>
+            </th>
+            <th>Status</th>
             <th>Détails</th>
         </tr>
     </thead>
@@ -10,8 +24,27 @@
         @for (groupe of groupeList; track groupe.id){
         <tr>
             <td>{{groupe.name}}</td>
+            <td>
+                @if (groupe.number) { {{groupe.number}} }
+                @else {inconnu }
+            </td>
+            <td>{{nbMembres[groupe.id] }}</td>
+            <td>@if (groupe.status =="arr�t�") 
+                { arrêté }
+            @else { {{groupe.status}} }</td>
             <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
         </tr>
         }
     </tbody>
 </table>
+
+</div>
+<!--
+<div class="liste">
+    <ul>
+            @for (groupe of groupeList; track groupe.id){
+            <li> new Groupe( {{groupe.id}},"{{groupe.name}}", {{nbMembres[groupe.id] }}), </li>
+            }
+</ul>
+
+</div>-->
