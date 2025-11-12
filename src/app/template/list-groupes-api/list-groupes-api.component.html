@@ -7,13 +7,13 @@
             <th>Nom</th>
             <th>Nombre de Membres (théorique)
             <div class="button" (click)="onTrierParNumber()"> TRIER </div>
-                <span *ngIf="triAscendantNumber">⬆️</span>
-                <span *ngIf="!triAscendantNumber">⬇️</span>
+                <span *@if="triAscendantNumber">⬆️</span>
+                <span *@if="!triAscendantNumber">⬇️</span>
             </th>
             <th>Nombre de Fiches Persos liées 
                 <div class="button" (click)="onTrierParMembresReels()"> TRIER </div>
-                <span *ngIf="triAscendant">⬆️</span>
-                <span *ngIf="!triAscendant">⬇️</span>
+                <span *@if="triAscendant">⬆️</span>
+                <span *@if="!triAscendant">⬇️</span>
             </th>
             <th>Status</th>
             <th>Détails</th>
