@@ -9,15 +9,15 @@ export class Groupe {
         nom! : String;
         capitaine! : Personnage;
         membresListe! : Personnage[];
-        nbmembres!: number;
+        nbMembres!: number;
 
         constructor(
         id : number,
         nom : String,
-        nbmembres :number) {
+        nbMembres :number) {
             this.id = id;
             this.nom = nom;
             //this.id = crypto.randomUUID().substring(0, 8);
-            this.nbmembres = nbmembres;
+            this.nbMembres = nbMembres;
         }
     }

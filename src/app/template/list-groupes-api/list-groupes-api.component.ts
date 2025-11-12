@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { forkJoin, map } from 'rxjs';
 import { Groupe } from 'src/app/models/groupe';
 import { GroupeAPI } from 'src/app/models/groupeApi';
 import { PersonnageAPI } from 'src/app/models/PersonnageApi';
@@ -22,7 +23,8 @@ export class ListGroupesApiComponent implements OnInit {
     persoList: PersonnageAPI[] =[];
     nbMembres: { [id: number]: number } = {};
     triAscendant = true; 
-    triAscendantNumber = true; 
+    triAscendantNumber = true;
+    isLoading = true; 
 
     
       constructor(
@@ -31,7 +33,7 @@ export class ListGroupesApiComponent implements OnInit {
         private listeGroupeService: ListeGroupeService
       ) {}
     
-  ngOnInit(): void {
+ /** ngOnInit(): void {
     this.groupeMockList = this.listeGroupeService.getGroupeList();
     this.apiGroupeService.getGroupes().subscribe({
       next: (groupeList: GroupeAPI[]) => {
@@ -41,7 +43,8 @@ export class ListGroupesApiComponent implements OnInit {
           this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
             next: (count) => {
               //this.nbMembres[groupe.id] = count 
-              this.nbMembres[groupe.id] = mock?.nbmembres ?? count;
+              this.nbMembres[groupe.id] = mock?.nbMembres ?? count;
+              this.isLoading = false;
             },
             error: (err) => console.error('Erreur récupération nombre membres :', err)
           });
@@ -50,7 +53,44 @@ export class ListGroupesApiComponent implements OnInit {
       error: (err) => console.log('Erreur récupération groupes :', err),
       complete: () => console.log('complete')
     });
-  }
+  } */
+
+  
+  ngOnInit(): void {
+  this.groupeMockList = this.listeGroupeService.getGroupeList();
+
+  this.apiGroupeService.getGroupes().subscribe({
+    next: (groupeList: GroupeAPI[]) => {
+      this.groupeList = groupeList;
+      const observables = groupeList.map(groupe => {
+        const mock = this.groupeMockList.find(g => g.id === groupe.id);
+        return this.apiGroupeService.getNombreMembres(groupe.id).pipe(
+          map(count => ({
+            id: groupe.id,
+            nbMembres: mock?.nbMembres ?? count
+          }))
+        );
+      });
+
+      forkJoin(observables).subscribe({
+        next: results => {
+          results.forEach(res => {
+            this.nbMembres[res.id] = res.nbMembres;
+          });
+          this.isLoading = false; 
+        },
+        error: err => {
+          console.error('Erreur lors du chargement des membres', err);
+          this.isLoading = false;
+        }
+      });
+    },
+    error: err => {
+      console.log('Erreur récupération groupes :', err);
+      this.isLoading = false;
+    }
+  });
+}
 
   onViewFicheGroupe(groupe: GroupeAPI) {
     this.router.navigateByUrl(`groupe/${groupe.id}`);
