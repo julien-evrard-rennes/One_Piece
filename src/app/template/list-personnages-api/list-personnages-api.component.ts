@@ -13,18 +13,21 @@ export class ListPersonnagesApiComponent implements OnInit {
   personnage!: PersonnageAPI;
   persoList!: PersonnageAPI[];
   likeButtonText = 'Ajouter un like !';
+  isLoading = true; 
 
   constructor(private listePersoService: ApiPerso, 
     private router: Router) {}
 
   ngOnInit(): void {
     this.listePersoService.getPersos().subscribe({
+
       next: (persoList: PersonnageAPI[]) => {
         this.persoList = persoList
         console.log(this.persoList)
+        this.isLoading = false;
       },
       error: (err: Error) => console.log(err),
-      complete: () => console.log('complete')
+      complete: () => console.log('complete'),
     })
   }
 

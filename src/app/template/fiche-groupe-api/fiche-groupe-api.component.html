@@ -38,7 +38,18 @@
             </li>
 
             <li>
-                <label><b> {{persoList.length}} Membres connus :</b></label>
+                <label><b> @if (!isLoading) { {{persoList.length}} }
+                @else {
+                    ...
+                }  
+                membres connus :</b></label>
+                <tr></tr>
+
+                @if (isLoading) { 
+                        <tr> Chargement des membres ... <div class="spinner"></div> </tr>
+
+                 }
+
                 <tr class="listePerso">
                     @for (personnage of persoList; track personnage.id) {
                     <a (click)="onViewFichePerso(personnage)">

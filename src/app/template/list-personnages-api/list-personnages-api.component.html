@@ -8,8 +8,15 @@
             <th>Détails</th>
         </tr>
     </thead>
+        @if (isLoading) {
+            <th colspan="5" class="container-spin">
+                <div class="spinner"></div>
+                <tr colspan="5">Chargement des personnages...</tr>
+            </th>
+            }
     <tbody>
         @for (personnage of persoList; track personnage.id){
+
         <tr>
             <td>{{personnage.name}} </td>
             <td>@if (personnage.age) { {{personnage.age}} } @else { age inconnu } </td>

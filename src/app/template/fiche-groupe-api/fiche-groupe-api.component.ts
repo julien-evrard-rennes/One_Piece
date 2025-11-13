@@ -16,6 +16,7 @@ export class FicheGroupeApiComponent implements OnInit {
   personnage!: PersonnageAPI;
   groupeAPI! : GroupeAPI;
   persoList: PersonnageAPI[] =[];
+  isLoading = true;
 
   constructor(
     private apiGroupeService : ApiGroupe,
@@ -47,8 +48,8 @@ export class FicheGroupeApiComponent implements OnInit {
   private getPersoList(groupe: GroupeAPI) {
     this.apiGroupeService.getPersoList(groupe).subscribe({
       next: (persoList) => {
-        this.persoList = persoList; 
-        console.log('Personnages du groupe :', this.persoList);
+        this.persoList = persoList;
+        this.isLoading = false; 
       },
       error: (err) => console.error('Erreur récupération personnages :', err)
     });

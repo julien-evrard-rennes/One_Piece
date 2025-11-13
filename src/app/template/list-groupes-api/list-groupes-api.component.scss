@@ -10,6 +10,11 @@ table th {
     border: 1px solid #bdbdbd;
     padding: 8px;
 }
+table th.container-spin tr{
+    background-color: unset;
+    display:flex;
+    justify-content: center;
+} 
 
 table td img {
     width: 50px;

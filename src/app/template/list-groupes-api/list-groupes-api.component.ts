@@ -33,30 +33,32 @@ export class ListGroupesApiComponent implements OnInit {
         private listeGroupeService: ListeGroupeService
       ) {}
     
- /** ngOnInit(): void {
-    this.groupeMockList = this.listeGroupeService.getGroupeList();
-    this.apiGroupeService.getGroupes().subscribe({
-      next: (groupeList: GroupeAPI[]) => {
-        this.groupeList = groupeList;
-        groupeList.forEach(groupe => {
-          const mock = this.groupeMockList.find(g => g.id === groupe.id);
-          this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
-            next: (count) => {
-              //this.nbMembres[groupe.id] = count 
-              this.nbMembres[groupe.id] = mock?.nbMembres ?? count;
+ngOnInit(): void {
+  this.isLoading = true;
+  this.groupeMockList = this.listeGroupeService.getGroupeList();
+  this.apiGroupeService.getGroupes().subscribe({
+    next: (groupeList: GroupeAPI[]) => {
+      this.groupeList = groupeList;
+      let loadedCount = 0;
+      groupeList.forEach(groupe => {
+        const mock = this.groupeMockList.find(g => g.id === groupe.id);
+        this.apiGroupeService.getNombreMembres(groupe.id).subscribe({
+          next: (count) => {
+            this.nbMembres[groupe.id] = mock?.nbMembres ?? count;
+            loadedCount++;
+            if (loadedCount === groupeList.length) {
               this.isLoading = false;
-            },
-            error: (err) => console.error('Erreur récupération nombre membres :', err)
-          });
+            }
+          },
+          error: (err) => console.error('Erreur récupération nombre membres :', err)
         });
-      },
-      error: (err) => console.log('Erreur récupération groupes :', err),
-      complete: () => console.log('complete')
-    });
-  } */
+      });
+    },
+    error: (err) => console.log('Erreur récupération groupes :', err),
+  });
+}
 
-  
-  ngOnInit(): void {
+  /** ngOnInit(): void {
   this.groupeMockList = this.listeGroupeService.getGroupeList();
 
   this.apiGroupeService.getGroupes().subscribe({
@@ -90,7 +92,7 @@ export class ListGroupesApiComponent implements OnInit {
       this.isLoading = false;
     }
   });
-}
+} **/
 
   onViewFicheGroupe(groupe: GroupeAPI) {
     this.router.navigateByUrl(`groupe/${groupe.id}`);
@@ -113,7 +115,7 @@ export class ListGroupesApiComponent implements OnInit {
       const nbB = this.nbMembres[b.id] ?? 0;
       return this.triAscendant ? nbA - nbB : nbB - nbA;
     });
-    this.triAscendant = !this.triAscendant; // on inverse le sens du tri à chaque clic
+    this.triAscendant = !this.triAscendant; 
   }
 }
 

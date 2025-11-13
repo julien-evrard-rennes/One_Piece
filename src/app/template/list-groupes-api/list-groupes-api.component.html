@@ -21,12 +21,12 @@
     </thead>
     <tbody>
 
-             @if (isLoading) {
+  @if (isLoading) { 
+            <th colspan="5" class="container-spin">
             <div class="spinner"></div>
-            <tr>Chargement des groupes...</tr>
-    }
-    @else {
-
+            <tr colspan="5">Chargement des groupes...</tr>
+            </th>
+}
         @for (groupe of groupeList; track groupe.id){
         <tr>
             <td>{{groupe.name}}</td>
@@ -41,7 +41,7 @@
             <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
         </tr>
         }
-    }
+    
 
     </tbody>
 </table>

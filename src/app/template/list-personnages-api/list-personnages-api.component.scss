@@ -19,6 +19,12 @@ table tr {
     background-color: rgb(247, 228, 195);
 }
 
+table th.container-spin tr {
+    background-color: unset;
+    display: flex;
+    justify-content: center;
+}
+
 table tr:nth-child(even) {
     background-color: #fbfcef;
 }
@@ -74,4 +80,24 @@ button {
 button:hover {
     background-color: #471b1b;
     cursor: pointer;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
