@@ -6,14 +6,20 @@
         <tr>
             <th>Nom</th>
             <th>Nombre de Membres (théorique)
-            <div class="button" (click)="onTrierParNumber()"> TRIER </div>
-                <span *@if="triAscendantNumber">⬆</span>
-                <span *@if="!triAscendantNumber">⬇</span>
+            <div class="button" (click)="onTrierParNumber()"> TRIER @if (triAscendantNumber) {
+            <span>⬆</span>
+            } @else {
+            <span>⬇</span>
+            }</div>
+
             </th>
             <th>Nombre de Fiches Persos liées 
-                <div class="button" (click)="onTrierParMembresReels()"> TRIER </div>
-                <span *@if="triAscendant">⬆</span>
-                <span *@if="!triAscendant">⬇</span>
+                <div class="button" (click)="onTrierParMembresReels()"> TRIER @if (triAscendantNumber) {
+                <span>⬆</span>
+                } @else {
+                <span>⬇</span>
+                }</div>
+
             </th>
             <th>Status</th>
             <th>Détails</th>

@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiPerso } from 'src/app/services/api-persos';
 import { PersonnageAPI } from 'src/app/models/PersonnageApi';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-liste-personnages',
@@ -17,7 +18,8 @@ export class ListPersonnagesApiComponent implements OnInit {
   triAscendantAge = true; 
 
   constructor(private listePersoService: ApiPerso, 
-    private router: Router) {}
+    private router: Router,
+    private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.listePersoService.getPersos().subscribe({
@@ -36,14 +38,14 @@ export class ListPersonnagesApiComponent implements OnInit {
     this.router.navigateByUrl(`personnage/${personnage.id}`);
   }
 
-  
-  onTrierParAge() {
-    this.persoList.sort((a,b) => {
-      const nbC = (a.age) ?? 0;
-      const nbD = (b.age) ?? 0;
-      return this.triAscendantAge ? nbC - nbD : nbD - nbC;
-    });
-    this.triAscendantAge = !this.triAscendantAge; 
-  }
+onTrierParAge() {
+  this.persoList.sort((a,b) => {
+    const nbC = a.age ?? 0;
+    const nbD = b.age ?? 0;
+    return this.triAscendantAge ? nbC - nbD : nbD - nbC;
+  });
+  this.triAscendantAge = !this.triAscendantAge;
+  this.cdr.detectChanges(); 
+}
 
 }
