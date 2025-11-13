@@ -2,7 +2,14 @@
     <thead>
         <tr>
             <th>Nom</th>
-            <th>Age</th>
+            <th>Age
+                <div class="button" (click)="onTrierParAge()"> TRIER @if (triAscendantAge) {
+                <span>⬆</span>
+                } @else {
+                <span>⬇</span>
+                }</div>
+
+            </th>
             <th>Équipage</th>
             <th>Status</th>
             <th>Détails</th>

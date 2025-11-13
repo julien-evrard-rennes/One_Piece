@@ -14,6 +14,7 @@ export class ListPersonnagesApiComponent implements OnInit {
   persoList!: PersonnageAPI[];
   likeButtonText = 'Ajouter un like !';
   isLoading = true; 
+  triAscendantAge = true; 
 
   constructor(private listePersoService: ApiPerso, 
     private router: Router) {}
@@ -33,6 +34,16 @@ export class ListPersonnagesApiComponent implements OnInit {
 
   onViewFichePerso(personnage: PersonnageAPI) {
     this.router.navigateByUrl(`personnage/${personnage.id}`);
+  }
+
+  
+  onTrierParAge() {
+    this.persoList.sort((a,b) => {
+      const nbC = (a.age) ?? 0;
+      const nbD = (b.age) ?? 0;
+      return this.triAscendantAge ? nbC - nbD : nbD - nbC;
+    });
+    this.triAscendantAge = !this.triAscendantAge; 
   }
 
 }
