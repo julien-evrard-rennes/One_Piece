@@ -101,7 +101,6 @@ onTrierParPrime() {
     return this.triAscendantPrime ? nbC - nbD : nbD - nbC;
   });
   this.triAscendantPrime = !this.triAscendantPrime;
-  console.table(this.persoList);
 }
 
 }

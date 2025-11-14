@@ -6,7 +6,6 @@ import { HeaderComponent } from './template/header/header.component';
 import { MainComponent } from './template/main/main.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { AccueilComponent } from './template/accueil/accueil.component';
-import { ListePersonnagesComponent } from './template/liste-personnages/liste-personnages.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     FooterComponent,
     AccueilComponent,
-    ListePersonnagesComponent,
     AppComponent,
   ],
   imports: [

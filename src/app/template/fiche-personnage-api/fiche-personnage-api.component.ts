@@ -29,7 +29,6 @@ export class FichePersonnageApiComponent {
 
 private getPersonnage() {
   const persoId = this.route.snapshot.params['id'];
-
   this.apiPersonnagesService.getPersonnageById(persoId)
     .subscribe({
       next: (p: PersonnageAPI) => {

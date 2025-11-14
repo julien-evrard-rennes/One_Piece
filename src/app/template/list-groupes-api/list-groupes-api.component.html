@@ -38,6 +38,14 @@
                 }
             </div>
             </th>
+            <th>Prime Totale
+                <div class="button" (click)="onTrierParPrime()"> TRIER @if (triAscendantPrime) {
+                    <span>⬇</span>
+                       } @else {
+                    <span>⬆</span>
+                         }
+                </div>
+            </th>
 
             <th>Détails</th>
         </tr>
@@ -45,14 +53,20 @@
     <tbody>
 
   @if (isLoading) { 
-            <th colspan="5" class="container-spin">
+            <th colspan="6" class="container-spin">
             <div class="spinner"></div>
-            <tr colspan="5">Chargement des groupes...</tr>
+            <tr colspan="6">Chargement des groupes...</tr>
             </th>
 }
         @for (groupe of groupeList; track groupe.id){
         <tr>
-            <td>{{groupe.name}}</td>
+            <td>
+            @if (groupe.name == "Armarda du Chapeau de Paille") {
+            Armada du Chapeau de Paille
+                }
+            @else { {{groupe.name}}
+                }
+            </td>
             <td>
                 @if (groupe.number) { {{groupe.number}} }
                 @else {inconnu }
@@ -61,6 +75,10 @@
             <td>@if (groupe.status =="arr�t�") 
                 { arrêté }
             @else { {{groupe.status}} }</td>
+            <td>
+                @if (groupe.total_prime) { {{groupe.total_prime}} }
+                @else {inconnu}
+            </td>
             <td><button (click)="onViewFicheGroupe(groupe)">Détails</button></td>
         </tr>
         }

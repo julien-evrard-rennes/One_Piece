@@ -5,6 +5,7 @@ import { Groupe } from 'src/app/models/groupe';
 import { GroupeAPI } from 'src/app/models/groupeApi';
 import { PersonnageAPI } from 'src/app/models/PersonnageApi';
 import { ApiGroupe } from 'src/app/services/api-groupes';
+import { ApiPerso } from 'src/app/services/api-persos';
 import { ListeGroupeService } from 'src/app/services/liste-groupe-service';
 
 @Component({
@@ -26,13 +27,16 @@ export class ListGroupesApiComponent implements OnInit {
     triAscendantReel = true; 
     triAscendantNumber = true;
     triAscendantStatus = true;
+    triAscendantPrime = true;
     isLoading = true; 
 
     
       constructor(
         private apiGroupeService: ApiGroupe, 
         private router: Router,
-        private listeGroupeService: ListeGroupeService
+        private listeGroupeService: ListeGroupeService,
+        private listePersoService: ApiPerso,
+
       ) {}
     
 ngOnInit(): void {
@@ -146,6 +150,16 @@ onTrierParNom() {
 
   this.groupeList = sorted;
   this.triAscendantStatus = !this.triAscendantStatus;
+}
+
+onTrierParPrime() {
+  this.groupeList.sort((a,b) => {
+    const nbC = this.listePersoService.extractPrime(a.total_prime) ?? 0;
+    const nbD = this.listePersoService.extractPrime(b.total_prime) ?? 0;
+    return this.triAscendantPrime ? nbC - nbD : nbD - nbC;
+  });
+  this.triAscendantPrime = !this.triAscendantPrime;
+  console.table(this.groupeList);
 }
 
 

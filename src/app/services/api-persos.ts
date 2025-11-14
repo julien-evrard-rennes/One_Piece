@@ -32,12 +32,12 @@ extractAge(age: string | number): number {
   return match ? Number(match[0]) : 0;
 }
 
+
 extractPrime(bounty: string): number {
   if (!bounty) return 0;
+  if (bounty =="inconnu") return 0;
   const bountyPropre = bounty.split(".").join("");
-  if (typeof bountyPropre === "number") return bountyPropre;
   return bountyPropre ? Number(bountyPropre) : 0;
-
 }
 
 }
