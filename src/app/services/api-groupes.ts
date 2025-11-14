@@ -60,4 +60,13 @@ getNombreMembres(groupeId: number): Observable<number> {
       })
     );
 }
+
+extractNombre(number: string | number): number {
+  if (typeof number === "number") return number;
+  if (number === '>85') return 85;
+  if (!number) return 0;
+  const match = number.match(/\d+/); 
+  return match ? Number(match[0]) : 0;
+}
+
 }

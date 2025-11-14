@@ -22,8 +22,10 @@ export class ListGroupesApiComponent implements OnInit {
     groupeMockList! : Groupe[];
     persoList: PersonnageAPI[] =[];
     nbMembres: { [id: number]: number } = {};
-    triAscendant = true; 
+    triAscendantNom = true;
+    triAscendantReel = true; 
     triAscendantNumber = true;
+    triAscendantStatus = true;
     isLoading = true; 
 
     
@@ -100,10 +102,24 @@ ngOnInit(): void {
 
 //
 
+onTrierParNom() {
+  const sorted = [...this.groupeList].sort((a, b) => {
+    const nomA = a.name?.toLowerCase() ?? "";
+    const nomB = b.name?.toLowerCase() ?? "";
+
+    return this.triAscendantNom
+      ? nomA.localeCompare(nomB)
+      : nomB.localeCompare(nomA);
+  });
+
+  this.groupeList = sorted;
+  this.triAscendantNom = !this.triAscendantNom;
+}
+
     onTrierParNumber() {
     this.groupeList.sort((a,b) => {
-      const nbC = parseInt(a.number) ?? 0;
-      const nbD = parseInt(b.number) ?? 0;
+      const nbC = this.apiGroupeService.extractNombre(a.number) ?? 0;
+      const nbD = this.apiGroupeService.extractNombre(b.number) ?? 0;
       return this.triAscendantNumber ? nbC - nbD : nbD - nbC;
     });
     this.triAscendantNumber = !this.triAscendantNumber; 
@@ -113,10 +129,27 @@ ngOnInit(): void {
     this.groupeList.sort((a, b) => {
       const nbA = this.nbMembres[a.id] ?? 0;
       const nbB = this.nbMembres[b.id] ?? 0;
-      return this.triAscendant ? nbA - nbB : nbB - nbA;
+      return this.triAscendantReel ? nbA - nbB : nbB - nbA;
     });
-    this.triAscendant = !this.triAscendant; 
+    this.triAscendantReel = !this.triAscendantReel; 
   }
+
+  onTrierParStatus() {
+  const sorted = [...this.groupeList].sort((a, b) => {
+    const nomA = a.status?.toLowerCase() ?? "";
+    const nomB = b.status?.toLowerCase() ?? "";
+
+    return this.triAscendantStatus
+      ? nomA.localeCompare(nomB)
+      : nomB.localeCompare(nomA);
+  });
+
+  this.groupeList = sorted;
+  this.triAscendantStatus = !this.triAscendantStatus;
+}
+
+
+
 }
 
 

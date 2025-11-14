@@ -24,4 +24,20 @@ getPersonnageById(persoId: number) {
   );
 }
 
+extractAge(age: string | number): number {
+  if (typeof age === "number") return age;
+  if (age === '1 000 ans') return 1000;
+  if (!age) return 0;
+  const match = age.match(/\d+/); 
+  return match ? Number(match[0]) : 0;
+}
+
+extractPrime(bounty: string): number {
+  if (!bounty) return 0;
+  const bountyPropre = bounty.split(".").join("");
+  if (typeof bountyPropre === "number") return bountyPropre;
+  return bountyPropre ? Number(bountyPropre) : 0;
+
+}
+
 }
